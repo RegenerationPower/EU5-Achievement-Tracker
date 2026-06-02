@@ -1,0 +1,13 @@
+﻿# is_human is not yet assigned at on_game_start, so we schedule for every
+# country and let ach_tracker.1's own trigger filter down to the player.
+on_game_start = {
+	on_actions = { ach_tracker_setup }
+}
+
+ach_tracker_setup = {
+	effect = {
+		every_country = {
+			trigger_event_silently = { id = ach_tracker.1 days = 30 }
+		}
+	}
+}

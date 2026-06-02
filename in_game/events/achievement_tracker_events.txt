@@ -1,0 +1,1581 @@
+﻿namespace = ach_tracker
+
+ach_tracker.1 = {
+	type = country_event
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+	hidden = yes
+
+	trigger = { is_human = yes }
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_for_the_glory_done }
+				custom_tooltip = {
+					text = for_the_glory_tt
+					has_variable = unlock_achievement_for_the_glory
+				}
+			}
+			set_variable = ach_tracker_for_the_glory_done
+			trigger_event_non_silently = ach_tracker.100
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_brothers_in_arms_done }
+				any_current_war = {
+					save_temporary_scope_as = target_war
+					root = {
+						NOT = { is_war_leader_of = scope:target_war }
+						any_country_together_in_war_with = {
+							war_score_in_war = {
+								war = scope:target_war
+								value >= 0.9
+							}
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_brothers_in_arms_done
+			trigger_event_non_silently = ach_tracker.101
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_city_of_cities_done }
+				any_core_location = { development >= 100 }
+			}
+			set_variable = ach_tracker_city_of_cities_done
+			trigger_event_non_silently = ach_tracker.102
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_cold_war_done }
+				any_current_war = { war_stalling_length_in_years >= 2 }
+			}
+			set_variable = ach_tracker_cold_war_done
+			trigger_event_non_silently = ach_tracker.103
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_until_death_do_us_apart_done }
+				custom_tooltip = {
+					text = until_death_do_us_apart_tt
+					any_royal_marriage = { count >= 1 }
+				}
+			}
+			set_variable = ach_tracker_until_death_do_us_apart_done
+			trigger_event_non_silently = ach_tracker.104
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_that_is_mine_done }
+				custom_tooltip = {
+					text = that_is_mine_tt
+					has_variable = unlock_achievement_that_is_mine
+				}
+			}
+			set_variable = ach_tracker_that_is_mine_done
+			trigger_event_non_silently = ach_tracker.105
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_victorious_done }
+				custom_tooltip = {
+					text = victorious_tt
+					has_variable = unlock_achievement_victorious
+				}
+			}
+			set_variable = ach_tracker_victorious_done
+			trigger_event_non_silently = ach_tracker.106
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_its_just_business_done }
+				custom_tooltip = {
+					text = its_just_business_tt
+					has_variable = unlock_achievement_its_just_business
+				}
+			}
+			set_variable = ach_tracker_its_just_business_done
+			trigger_event_non_silently = ach_tracker.107
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_all_in_favor_done }
+				custom_tooltip = {
+					text = all_in_favor_tt
+					has_variable = unlock_achievement_all_in_favor
+				}
+			}
+			set_variable = ach_tracker_all_in_favor_done
+			trigger_event_non_silently = ach_tracker.108
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_patron_of_the_arts_done }
+				custom_tooltip = {
+					text = patron_of_the_arts_tt
+					has_variable = unlock_achievement_patron_of_the_arts
+				}
+			}
+			set_variable = ach_tracker_patron_of_the_arts_done
+			trigger_event_non_silently = ach_tracker.109
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_combined_arms_done }
+				any_army = { has_levies = yes }
+				any_army = { has_regulars = yes }
+				any_army = { has_mercenaries = yes }
+			}
+			set_variable = ach_tracker_combined_arms_done
+			trigger_event_non_silently = ach_tracker.110
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_rule_of_law_done }
+				custom_tooltip = {
+					text = rule_of_law_tt
+					has_variable = unlock_achievement_rule_of_law
+				}
+			}
+			set_variable = ach_tracker_rule_of_law_done
+			trigger_event_non_silently = ach_tracker.111
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_here_i_stand_done }
+				religion = religion:lutheran
+				num_of_religious_aspects = 3
+			}
+			set_variable = ach_tracker_here_i_stand_done
+			trigger_event_non_silently = ach_tracker.112
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_rule_britannia_done }
+				has_or_had_tag = ENG
+				tag = GBR
+				is_hegemon_type = hegemony:naval_hegemon
+			}
+			set_variable = ach_tracker_rule_britannia_done
+			trigger_event_non_silently = ach_tracker.113
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_plus_ultra_done }
+				has_or_had_tag = CAS
+				OR = { tag = CAS tag = SPA }
+				has_presence_in = region:iberia_region
+				has_presence_in = region:maghreb_region
+				has_presence_in = region:caribbean_region
+				has_presence_in = region:mesoamerica_region
+				has_presence_in = region:andes_region
+			}
+			set_variable = ach_tracker_plus_ultra_done
+			trigger_event_non_silently = ach_tracker.114
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_city_of_mans_desire_done }
+				has_or_had_tag = TUR
+				owns = location:constantinople
+				custom_tooltip = {
+					text = has_emerged_victorious_during_rise_of_ottomans_situation_tt
+					has_global_variable = victory_in_rise_of_ottomans_variable
+				}
+			}
+			set_variable = ach_tracker_city_of_mans_desire_done
+			trigger_event_non_silently = ach_tracker.115
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_a_pile_of_gold_done }
+				any_owned_location = {
+					OR = {
+						raw_material ?= goods:goods_gold
+						raw_material ?= goods:silver
+					}
+					raw_material_output > 0
+					count >= 35
+				}
+			}
+			set_variable = ach_tracker_a_pile_of_gold_done
+			trigger_event_non_silently = ach_tracker.116
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_at_every_continent_done }
+				any_owned_location = { continent = continent:europe }
+				any_owned_location = { continent = continent:asia }
+				any_owned_location = { continent = continent:africa }
+				any_owned_location = { continent = continent:america }
+				any_owned_location = { continent = continent:oceania }
+			}
+			set_variable = ach_tracker_at_every_continent_done
+			trigger_event_non_silently = ach_tracker.117
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_grand_coalition_done }
+				any_international_organizations_member_of = {
+					international_organization_type = international_organization_type:coalition
+					total_members > 5
+				}
+			}
+			set_variable = ach_tracker_grand_coalition_done
+			trigger_event_non_silently = ach_tracker.118
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_it_belongs_in_a_museum_done }
+				custom_tooltip = {
+					text = it_belongs_in_a_museum_tt
+					has_variable = unlock_achievement_it_belongs_in_a_museum
+				}
+			}
+			set_variable = ach_tracker_it_belongs_in_a_museum_done
+			trigger_event_non_silently = ach_tracker.119
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_a_cabinet_of_curiosities_done }
+				any_cabinet_action = { cabinet_action_type = adm }
+				any_cabinet_action = { cabinet_action_type = dip }
+				any_cabinet_action = { cabinet_action_type = mil }
+			}
+			set_variable = ach_tracker_a_cabinet_of_curiosities_done
+			trigger_event_non_silently = ach_tracker.120
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_hearts_and_minds_done }
+				custom_tooltip = {
+					text = hearts_and_minds_tt
+					has_variable = unlock_achievement_hearts_and_minds
+				}
+			}
+			set_variable = ach_tracker_hearts_and_minds_done
+			trigger_event_non_silently = ach_tracker.121
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_a_brave_new_world_done }
+				NOT = { capital ?= { continent = continent:america } }
+				continent:america = {
+					any_location_in_continent = { is_discovered_by = root }
+				}
+			}
+			set_variable = ach_tracker_a_brave_new_world_done
+			trigger_event_non_silently = ach_tracker.122
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_crusader_kings_done }
+				custom_tooltip = {
+					text = crusader_kings_tt
+					has_variable = unlock_achievement_crusader_kings
+				}
+			}
+			set_variable = ach_tracker_crusader_kings_done
+			trigger_event_non_silently = ach_tracker.123
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_lingua_franca_done }
+				has_or_had_tag = FRA
+				is_hegemon_type = hegemony:cultural_hegemon
+			}
+			set_variable = ach_tracker_lingua_franca_done
+			trigger_event_non_silently = ach_tracker.124
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_break_the_yoke_done }
+				OR = {
+					has_or_had_tag = MOS has_or_had_tag = BLO has_or_had_tag = DMI has_or_had_tag = GLM
+					has_or_had_tag = KCH has_or_had_tag = KOS has_or_had_tag = MRM has_or_had_tag = NSL
+					has_or_had_tag = NZH has_or_had_tag = RSO has_or_had_tag = RYA has_or_had_tag = SKY
+					has_or_had_tag = SMO has_or_had_tag = TRS has_or_had_tag = TVE has_or_had_tag = YAR
+					has_or_had_tag = YRV has_or_had_tag = FMB has_or_had_tag = GRS has_or_had_tag = KAS
+					has_or_had_tag = KLN has_or_had_tag = KZK has_or_had_tag = MOG has_or_had_tag = MSV
+					has_or_had_tag = PRK has_or_had_tag = SZL has_or_had_tag = UGL has_or_had_tag = VLR
+					has_or_had_tag = VYA has_or_had_tag = ZUB
+				}
+				NOT = { is_member_of_international_organization = international_organization:tatar_yoke }
+			}
+			set_variable = ach_tracker_break_the_yoke_done
+			trigger_event_non_silently = ach_tracker.125
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_felix_austria_done }
+				has_or_had_tag = HAB
+				international_organization:hre.leader_country = root
+				is_great_power = yes
+			}
+			set_variable = ach_tracker_felix_austria_done
+			trigger_event_non_silently = ach_tracker.126
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_hongwu_di_done }
+				OR = { has_or_had_tag = CHI has_or_had_tag = MNG }
+				international_organization:middle_kingdom.leader_country = root
+				has_or_had_tag = MNG
+				has_or_had_tag = CHI
+				region:north_china_region = {
+					any_ownable_location_in_region = { percent = 1 top_owner ?= root }
+				}
+				region:south_china_region = {
+					any_ownable_location_in_region = { percent = 1 top_owner ?= root }
+				}
+				region:west_china_region = {
+					any_ownable_location_in_region = { percent = 1 top_owner ?= root }
+				}
+				custom_tooltip = {
+					text = hongwu_di_east_china_trigger_tt
+					region:east_china_region = {
+						any_ownable_location_in_region = {
+							OR = { area = area:taiwan_area top_owner ?= root }
+							percent = 1
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_hongwu_di_done
+			trigger_event_non_silently = ach_tracker.127
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_just_a_little_bit_more_patience_done }
+				current_year >= 1836
+			}
+			set_variable = ach_tracker_just_a_little_bit_more_patience_done
+			trigger_event_non_silently = ach_tracker.128
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_potato_potato_done }
+				capital ?= { continent = continent:europe }
+				any_owned_location = {
+					raw_material ?= goods:potato
+					raw_material_output > 0
+				}
+			}
+			set_variable = ach_tracker_potato_potato_done
+			trigger_event_non_silently = ach_tracker.129
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_three_mountains_done }
+				culture = culture:ryukyu_culture
+				tag = RYU
+			}
+			set_variable = ach_tracker_three_mountains_done
+			trigger_event_non_silently = ach_tracker.130
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_doge_coins_done }
+				has_or_had_tag = VEN
+				is_hegemon_type = hegemony:economic_hegemon
+			}
+			set_variable = ach_tracker_doge_coins_done
+			trigger_event_non_silently = ach_tracker.131
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_je_maintiendrai_done }
+				culture = { has_culture_group = culture_group:netherlandish_group }
+				tag = NED
+			}
+			set_variable = ach_tracker_je_maintiendrai_done
+			trigger_event_non_silently = ach_tracker.132
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_lion_of_the_north_done }
+				has_or_had_tag = SWE
+				religion = religion:lutheran
+				custom_tooltip = {
+					text = lion_of_the_north_tt
+					has_variable = unlock_lion_of_the_north_achievement_variable
+				}
+			}
+			set_variable = ach_tracker_lion_of_the_north_done
+			trigger_event_non_silently = ach_tracker.133
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_the_navigator_done }
+				has_or_had_tag = POR
+				has_presence_in = continent:africa
+				has_presence_in = continent:america
+				has_presence_in = sub_continent:south_asia
+				has_presence_in = region:indonesia_region
+				OR = {
+					current_age = age_1_traditions
+					current_age = age_2_renaissance
+					current_age = age_3_discovery
+				}
+			}
+			set_variable = ach_tracker_the_navigator_done
+			trigger_event_non_silently = ach_tracker.134
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_house_of_hus_done }
+				has_or_had_tag = BOH
+				religion = religion:hussite
+				custom_tooltip = {
+					text = hussites_won_hussite_wars_situation_tt
+					has_global_variable = victorious_hussites_variable
+				}
+			}
+			set_variable = ach_tracker_house_of_hus_done
+			trigger_event_non_silently = ach_tracker.135
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_the_spice_must_flow_done }
+				capital ?= { continent = continent:europe }
+				any_trade = { goods = goods:cloves count > 0 }
+			}
+			set_variable = ach_tracker_the_spice_must_flow_done
+			trigger_event_non_silently = ach_tracker.136
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_scientific_victory_done }
+				num_of_advances_researched >= 450
+			}
+			set_variable = ach_tracker_scientific_victory_done
+			trigger_event_non_silently = ach_tracker.137
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_cities_skyline_done }
+				any_owned_location = { total_building_levels >= 200 }
+			}
+			set_variable = ach_tracker_cities_skyline_done
+			trigger_event_non_silently = ach_tracker.138
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_moneytalks_done }
+				is_hegemon_type = hegemony:economic_hegemon
+			}
+			set_variable = ach_tracker_moneytalks_done
+			trigger_event_non_silently = ach_tracker.139
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_the_empire_strikes_back_done }
+				OR = {
+					culture = { has_culture_group = culture_group:french_group }
+					culture = { has_culture_group = culture_group:iberian_group }
+					culture = { has_culture_group = culture_group:italian_group }
+				}
+				OR = {
+					religion = religion:catholic
+					AND = {
+						NOT = { religion = religion:orthodox }
+						religion.group = religion_group:christian
+					}
+				}
+				OR = {
+					has_or_had_tag = ACH has_or_had_tag = ALB has_or_had_tag = ARG has_or_had_tag = ATH
+					has_or_had_tag = BOD has_or_had_tag = CEP has_or_had_tag = CRT has_or_had_tag = KNI
+					has_or_had_tag = LAT has_or_had_tag = NAX has_or_had_tag = NEG has_or_had_tag = NEO
+					has_or_had_tag = PAT has_or_had_tag = SAO has_or_had_tag = THE
+				}
+				tag = LAT
+			}
+			set_variable = ach_tracker_the_empire_strikes_back_done
+			trigger_event_non_silently = ach_tracker.140
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_megalopolis_done }
+				any_owned_location = {
+					location_rank = location_rank:megalopolis
+					original_location_rank = location_rank:rural_settlement
+				}
+			}
+			set_variable = ach_tracker_megalopolis_done
+			trigger_event_non_silently = ach_tracker.141
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_what_the_lord_giveth_done }
+				num_estate_privileges:nobles_estate = 0
+			}
+			set_variable = ach_tracker_what_the_lord_giveth_done
+			trigger_event_non_silently = ach_tracker.142
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_be_in_all_the_clubs_done }
+				any_international_organizations_member_of = { count >= 6 }
+			}
+			set_variable = ach_tracker_be_in_all_the_clubs_done
+			trigger_event_non_silently = ach_tracker.143
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_welfare_state_done }
+				any_market_present_in_country = {
+					market_max_food > 60000
+					market_food_percentage > 0.99
+				}
+			}
+			set_variable = ach_tracker_welfare_state_done
+			trigger_event_non_silently = ach_tracker.144
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_five_hundred_miles_done }
+				any_owned_location = { num_roads >= 5 count >= 100 }
+			}
+			set_variable = ach_tracker_five_hundred_miles_done
+			trigger_event_non_silently = ach_tracker.145
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_total_control_done }
+				any_owned_location = { count >= 20 local_control = 1 }
+			}
+			set_variable = ach_tracker_total_control_done
+			trigger_event_non_silently = ach_tracker.146
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_true_heir_of_timur_done }
+				custom_tooltip = {
+					text = had_timur_as_past_ruler_tt
+					has_global_variable = had_timur_ruler_variable
+				}
+				tag = MUG
+			}
+			set_variable = ach_tracker_true_heir_of_timur_done
+			trigger_event_non_silently = ach_tracker.147
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_respected_done }
+				prestige = 100
+				legitimacy = 100
+				stability = 100
+			}
+			set_variable = ach_tracker_respected_done
+			trigger_event_non_silently = ach_tracker.148
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_letat_cest_moi_done }
+				societal_value:centralization_vs_decentralization < -99
+				societal_value:absolutism_vs_liberalism < -99
+			}
+			set_variable = ach_tracker_letat_cest_moi_done
+			trigger_event_non_silently = ach_tracker.149
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_manchurian_candidate_done }
+				culture ?= { has_culture_group = culture_group:jurchen_group }
+				international_organization:middle_kingdom = { leader_country = root }
+			}
+			set_variable = ach_tracker_manchurian_candidate_done
+			trigger_event_non_silently = ach_tracker.150
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_saladin_legacy_done }
+				has_or_had_tag = HSN
+				region:egypt_region = { any_ownable_location_in_region = { percent = 1 top_owner ?= root } }
+				area:hedjaz_area = { any_ownable_location_in_area = { percent = 1 top_owner ?= root } }
+				area:north_yemen_area = { any_ownable_location_in_area = { percent = 1 top_owner ?= root } }
+				area:south_yemen_area = { any_ownable_location_in_area = { percent = 1 top_owner ?= root } }
+				area:levant_area = { any_ownable_location_in_area = { percent = 1 top_owner ?= root } }
+				area:jazira_area = { any_ownable_location_in_area = { percent = 1 top_owner ?= root } }
+			}
+			set_variable = ach_tracker_saladin_legacy_done
+			trigger_event_non_silently = ach_tracker.151
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_african_trade_done }
+				has_or_had_tag = ZAN
+				any_market_present_in_country = {
+					location.continent = continent:africa
+					NOT = {
+						any_market_in_world = {
+							total_goods_value_traded > prev.total_goods_value_traded
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_african_trade_done
+			trigger_event_non_silently = ach_tracker.152
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_i_am_inevitable_done }
+				is_hegemon_type = hegemony:military_hegemon
+				is_hegemon_type = hegemony:naval_hegemon
+				is_hegemon_type = hegemony:economic_hegemon
+				is_hegemon_type = hegemony:cultural_hegemon
+				is_hegemon_type = hegemony:diplomatic_hegemon
+			}
+			set_variable = ach_tracker_i_am_inevitable_done
+			trigger_event_non_silently = ach_tracker.153
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_greatness_from_small_beginnings_done }
+				had_country_rank_level = 1
+				country_rank_level = 4
+				NOT = { is_leader_of_international_organization = international_organization:hre }
+			}
+			set_variable = ach_tracker_greatness_from_small_beginnings_done
+			trigger_event_non_silently = ach_tracker.154
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_goose_step_by_step_done }
+				tag = PRU
+				societal_value:offensive_vs_defensive < -50
+				societal_value:quality_vs_quantity < -50
+			}
+			set_variable = ach_tracker_goose_step_by_step_done
+			trigger_event_non_silently = ach_tracker.155
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_ill_be_wittelsback_done }
+				tag = BRA
+				custom_tooltip = {
+					text = had_turmoil_in_brandenburg_disaster_tt
+					has_variable = had_turmoil_in_brandenburg_disaster_variable
+				}
+				custom_tooltip = {
+					text = ill_be_wittelsback_tt
+					has_variable = unlock_achievement_ill_be_wittelsback
+				}
+				ruler_or_heir_if_regent = { dynasty = dynasty:wittelsbach_dynasty }
+			}
+			set_variable = ach_tracker_ill_be_wittelsback_done
+			trigger_event_non_silently = ach_tracker.156
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_reformatio_imperii_done }
+				is_leader_of_international_organization = international_organization:hre
+				international_organization:hre = {
+					international_organization_has_policy = policy:perpetual_diet_policy
+					international_organization_has_policy = policy:only_emperor_payment
+					international_organization_has_policy = policy:landfriede_rank_4_policy
+				}
+			}
+			set_variable = ach_tracker_reformatio_imperii_done
+			trigger_event_non_silently = ach_tracker.157
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_stefans_dream_done }
+				has_or_had_tag = SER
+				tag = SER
+				owns = location:constantinople
+				country_rank = country_rank:rank_empire
+				scripted_geography:serbian_empire_geography = {
+					any_location_in_scripted_geography = {
+						percent = 1
+						trigger_if = {
+							limit = { is_ownable = yes }
+							top_owner ?= root
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_stefans_dream_done
+			trigger_event_non_silently = ach_tracker.158
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_there_can_be_only_one_done }
+				OR = {
+					AND = {
+						is_leader_of_international_organization = international_organization:hre
+						NOT = { country_exists = c:BYZ }
+						owns = location:constantinople
+					}
+					AND = {
+						has_or_had_tag = BYZ
+						NOT = { io_exists = international_organization:hre }
+						owns = location:aachen
+					}
+				}
+			}
+			set_variable = ach_tracker_there_can_be_only_one_done
+			trigger_event_non_silently = ach_tracker.159
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_the_great_great_wall_done }
+				scripted_geography:historical_route_of_great_wall = {
+					any_location_in_scripted_geography = {
+						percent = 1
+						is_ownable = yes
+						top_owner ?= root
+						has_building = building_type:city_walls
+					}
+				}
+			}
+			set_variable = ach_tracker_the_great_great_wall_done
+			trigger_event_non_silently = ach_tracker.160
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_a_tale_of_two_cities_done }
+				any_province = {
+					any_location_in_province = {
+						OR = {
+							location_rank = location_rank:city
+							location_rank = location_rank:megalopolis
+						}
+						owner ?= root
+						has_max_town_rights = yes
+						save_temporary_scope_as = first_city_scope
+					}
+					any_location_in_province = {
+						OR = {
+							location_rank = location_rank:city
+							location_rank = location_rank:megalopolis
+						}
+						owner ?= root
+						NOT = { this = scope:first_city_scope }
+						has_max_town_rights = yes
+						has_different_town_rights_than = scope:first_city_scope
+					}
+				}
+			}
+			set_variable = ach_tracker_a_tale_of_two_cities_done
+			trigger_event_non_silently = ach_tracker.161
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_what_a_great_guy_done }
+				has_presence_in = sub_continent:east_asia
+				has_presence_in = sub_continent:north_asia
+				has_presence_in = sub_continent:central_asia
+				has_presence_in = sub_continent:middle_east
+				has_presence_in = sub_continent:south_asia
+				has_presence_in = sub_continent:south_east_asia
+				has_presence_in = sub_continent:pacific_islands
+				has_presence_in = sub_continent:australasia
+				has_presence_in = sub_continent:north_america
+				has_presence_in = sub_continent:south_america
+				has_presence_in = sub_continent:north_africa
+				has_presence_in = sub_continent:west_africa
+				has_presence_in = sub_continent:east_africa
+				has_presence_in = sub_continent:central_africa
+				has_presence_in = sub_continent:southern_africa
+				has_presence_in = sub_continent:western_europe
+				has_presence_in = sub_continent:eastern_europe
+			}
+			set_variable = ach_tracker_what_a_great_guy_done
+			trigger_event_non_silently = ach_tracker.162
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_reborn_from_the_ashes_done }
+				has_or_had_tag = BYZ
+				has_dlc = "d008_fate_of_the_phoenix"
+				custom_tooltip = {
+					text = reborn_from_the_ashes_tt
+					has_variable = won_fate_of_the_phoenix_disaster_variable
+				}
+			}
+			set_variable = ach_tracker_reborn_from_the_ashes_done
+			trigger_event_non_silently = ach_tracker.163
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_nut_allergy_done }
+				has_dlc = "d008_fate_of_the_phoenix"
+				any_cabinet_character = { count >= 6 has_trait = eunuch }
+			}
+			set_variable = ach_tracker_nut_allergy_done
+			trigger_event_non_silently = ach_tracker.164
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_holy_flush_done }
+				has_dlc = "d008_fate_of_the_phoenix"
+				religion = religion:orthodox
+				owns = location:constantinople
+				owns = location:rome
+				owns = location:jerusalem
+				owns = location:antioch
+				owns = location:alexandria
+			}
+			set_variable = ach_tracker_holy_flush_done
+			trigger_event_non_silently = ach_tracker.165
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_give_me_back_my_legions_done }
+				has_or_had_tag = BYZ
+				has_dlc = "d008_fate_of_the_phoenix"
+				any_army = {
+					any_sub_unit = {
+						count >= 10
+						OR = {
+							sub_unit_type = unit_type:a_legionaries_1
+							sub_unit_type = unit_type:a_legionaries_2
+							sub_unit_type = unit_type:a_legionaries_3
+							sub_unit_type = unit_type:a_legionaries_4
+							sub_unit_type = unit_type:a_legionaries_5
+							sub_unit_type = unit_type:a_legionaries_6
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_give_me_back_my_legions_done
+			trigger_event_non_silently = ach_tracker.166
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_mare_nostrum_done }
+				has_or_had_tag = BYZ
+				has_dlc = "d008_fate_of_the_phoenix"
+				tag = ROM
+				societal_value:latinization_vs_hellenization < -99
+				scripted_geography:mare_nostrum_geography = {
+					any_location_in_scripted_geography = {
+						percent = 1
+						trigger_if = {
+							limit = { is_ownable = yes }
+							top_owner ?= root
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_mare_nostrum_done
+			trigger_event_non_silently = ach_tracker.167
+		}
+		else_if = {
+			limit = {
+				NOT = { has_variable = ach_tracker_belisars_legacy_done }
+				has_or_had_tag = BYZ
+				has_dlc = "d008_fate_of_the_phoenix"
+				has_country_modifier = mended_schism
+				scripted_geography:justinian_borders_geography = {
+					any_location_in_scripted_geography = {
+						percent = 1
+						trigger_if = {
+							limit = { is_ownable = yes }
+							top_owner ?= root
+						}
+					}
+				}
+			}
+			set_variable = ach_tracker_belisars_legacy_done
+			trigger_event_non_silently = ach_tracker.168
+		}
+
+		trigger_event_silently = { id = ach_tracker.1 days = 30 }
+	}
+}
+
+ach_tracker.100 = {
+	type = country_event
+	title = ach_tracker.100.t
+	desc = ach_tracker.100.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/for_the_glory.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.101 = {
+	type = country_event
+	title = ach_tracker.101.t
+	desc = ach_tracker.101.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/brothers_in_arms.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.102 = {
+	type = country_event
+	title = ach_tracker.102.t
+	desc = ach_tracker.102.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/city_of_cities.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.103 = {
+	type = country_event
+	title = ach_tracker.103.t
+	desc = ach_tracker.103.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/cold_war.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.104 = {
+	type = country_event
+	title = ach_tracker.104.t
+	desc = ach_tracker.104.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/until_death_do_us_apart.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.105 = {
+	type = country_event
+	title = ach_tracker.105.t
+	desc = ach_tracker.105.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/that_is_mine.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.106 = {
+	type = country_event
+	title = ach_tracker.106.t
+	desc = ach_tracker.106.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/victorious.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.107 = {
+	type = country_event
+	title = ach_tracker.107.t
+	desc = ach_tracker.107.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/its_just_business.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.108 = {
+	type = country_event
+	title = ach_tracker.108.t
+	desc = ach_tracker.108.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/all_in_favor.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.109 = {
+	type = country_event
+	title = ach_tracker.109.t
+	desc = ach_tracker.109.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/patron_of_the_arts.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.110 = {
+	type = country_event
+	title = ach_tracker.110.t
+	desc = ach_tracker.110.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/combined_arms.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.111 = {
+	type = country_event
+	title = ach_tracker.111.t
+	desc = ach_tracker.111.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/rule_of_law.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.112 = {
+	type = country_event
+	title = ach_tracker.112.t
+	desc = ach_tracker.112.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/here_i_stand.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.113 = {
+	type = country_event
+	title = ach_tracker.113.t
+	desc = ach_tracker.113.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/rule_britannia.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.114 = {
+	type = country_event
+	title = ach_tracker.114.t
+	desc = ach_tracker.114.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/plus_ultra.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.115 = {
+	type = country_event
+	title = ach_tracker.115.t
+	desc = ach_tracker.115.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/city_of_mans_desire.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.116 = {
+	type = country_event
+	title = ach_tracker.116.t
+	desc = ach_tracker.116.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/a_pile_of_gold.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.117 = {
+	type = country_event
+	title = ach_tracker.117.t
+	desc = ach_tracker.117.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/at_every_continent.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.118 = {
+	type = country_event
+	title = ach_tracker.118.t
+	desc = ach_tracker.118.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/grand_coalition.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.119 = {
+	type = country_event
+	title = ach_tracker.119.t
+	desc = ach_tracker.119.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/it_belongs_in_a_museum.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.120 = {
+	type = country_event
+	title = ach_tracker.120.t
+	desc = ach_tracker.120.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/a_cabinet_of_curiosities.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.121 = {
+	type = country_event
+	title = ach_tracker.121.t
+	desc = ach_tracker.121.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/hearts_and_minds.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.122 = {
+	type = country_event
+	title = ach_tracker.122.t
+	desc = ach_tracker.122.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/a_brave_new_world.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.123 = {
+	type = country_event
+	title = ach_tracker.123.t
+	desc = ach_tracker.123.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/crusader_kings.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.124 = {
+	type = country_event
+	title = ach_tracker.124.t
+	desc = ach_tracker.124.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/lingua_franca.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.125 = {
+	type = country_event
+	title = ach_tracker.125.t
+	desc = ach_tracker.125.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/break_the_yoke.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.126 = {
+	type = country_event
+	title = ach_tracker.126.t
+	desc = ach_tracker.126.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/felix_austria.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.127 = {
+	type = country_event
+	title = ach_tracker.127.t
+	desc = ach_tracker.127.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/hongwu_di.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.128 = {
+	type = country_event
+	title = ach_tracker.128.t
+	desc = ach_tracker.128.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/just_a_little_bit_more_patience.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.129 = {
+	type = country_event
+	title = ach_tracker.129.t
+	desc = ach_tracker.129.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/potato_potato.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.130 = {
+	type = country_event
+	title = ach_tracker.130.t
+	desc = ach_tracker.130.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/three_mountains.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.131 = {
+	type = country_event
+	title = ach_tracker.131.t
+	desc = ach_tracker.131.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/doge_coins.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.132 = {
+	type = country_event
+	title = ach_tracker.132.t
+	desc = ach_tracker.132.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/je_maintiendrai.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.133 = {
+	type = country_event
+	title = ach_tracker.133.t
+	desc = ach_tracker.133.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/lion_of_the_north.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.134 = {
+	type = country_event
+	title = ach_tracker.134.t
+	desc = ach_tracker.134.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/the_navigator.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.135 = {
+	type = country_event
+	title = ach_tracker.135.t
+	desc = ach_tracker.135.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/house_of_hus.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.136 = {
+	type = country_event
+	title = ach_tracker.136.t
+	desc = ach_tracker.136.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/the_spice_must_flow.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.137 = {
+	type = country_event
+	title = ach_tracker.137.t
+	desc = ach_tracker.137.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/scientific_victory.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.138 = {
+	type = country_event
+	title = ach_tracker.138.t
+	desc = ach_tracker.138.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/cities_skyline.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.139 = {
+	type = country_event
+	title = ach_tracker.139.t
+	desc = ach_tracker.139.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/moneytalks.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.140 = {
+	type = country_event
+	title = ach_tracker.140.t
+	desc = ach_tracker.140.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/the_empire_strikes_back.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.141 = {
+	type = country_event
+	title = ach_tracker.141.t
+	desc = ach_tracker.141.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/megalopolis.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.142 = {
+	type = country_event
+	title = ach_tracker.142.t
+	desc = ach_tracker.142.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/what_the_lord_giveth.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.143 = {
+	type = country_event
+	title = ach_tracker.143.t
+	desc = ach_tracker.143.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/be_in_all_the_clubs.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.144 = {
+	type = country_event
+	title = ach_tracker.144.t
+	desc = ach_tracker.144.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/welfare_state.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.145 = {
+	type = country_event
+	title = ach_tracker.145.t
+	desc = ach_tracker.145.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/five_hundred_miles.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.146 = {
+	type = country_event
+	title = ach_tracker.146.t
+	desc = ach_tracker.146.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/total_control.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.147 = {
+	type = country_event
+	title = ach_tracker.147.t
+	desc = ach_tracker.147.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/true_heir_of_timur.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.148 = {
+	type = country_event
+	title = ach_tracker.148.t
+	desc = ach_tracker.148.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/respected.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.149 = {
+	type = country_event
+	title = ach_tracker.149.t
+	desc = ach_tracker.149.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/letat_cest_moi.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.150 = {
+	type = country_event
+	title = ach_tracker.150.t
+	desc = ach_tracker.150.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/manchurian_candidate.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.151 = {
+	type = country_event
+	title = ach_tracker.151.t
+	desc = ach_tracker.151.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/saladin_legacy.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.152 = {
+	type = country_event
+	title = ach_tracker.152.t
+	desc = ach_tracker.152.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/african_trade.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.153 = {
+	type = country_event
+	title = ach_tracker.153.t
+	desc = ach_tracker.153.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/i_am_inevitable.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.154 = {
+	type = country_event
+	title = ach_tracker.154.t
+	desc = ach_tracker.154.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/greatness_from_small_beginnings.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.155 = {
+	type = country_event
+	title = ach_tracker.155.t
+	desc = ach_tracker.155.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/goose_step_by_step.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.156 = {
+	type = country_event
+	title = ach_tracker.156.t
+	desc = ach_tracker.156.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/ill_be_wittelsback.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.157 = {
+	type = country_event
+	title = ach_tracker.157.t
+	desc = ach_tracker.157.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/reformatio_imperii.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.158 = {
+	type = country_event
+	title = ach_tracker.158.t
+	desc = ach_tracker.158.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/stefans_dream.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.159 = {
+	type = country_event
+	title = ach_tracker.159.t
+	desc = ach_tracker.159.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/there_can_be_only_one.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.160 = {
+	type = country_event
+	title = ach_tracker.160.t
+	desc = ach_tracker.160.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/the_great_great_wall.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.161 = {
+	type = country_event
+	title = ach_tracker.161.t
+	desc = ach_tracker.161.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/a_tale_of_two_cities.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.162 = {
+	type = country_event
+	title = ach_tracker.162.t
+	desc = ach_tracker.162.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/what_a_great_guy.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.163 = {
+	type = country_event
+	title = ach_tracker.163.t
+	desc = ach_tracker.163.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/reborn_from_the_ashes.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.164 = {
+	type = country_event
+	title = ach_tracker.164.t
+	desc = ach_tracker.164.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/nut_allergy.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.165 = {
+	type = country_event
+	title = ach_tracker.165.t
+	desc = ach_tracker.165.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/holy_flush.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.166 = {
+	type = country_event
+	title = ach_tracker.166.t
+	desc = ach_tracker.166.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/give_me_back_my_legions.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.167 = {
+	type = country_event
+	title = ach_tracker.167.t
+	desc = ach_tracker.167.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/mare_nostrum.dds"
+
+	option = { name = ach_tracker.glory }
+}
+
+ach_tracker.168 = {
+	type = country_event
+	title = ach_tracker.168.t
+	desc = ach_tracker.168.d
+	outcome = positive
+	image = "gfx/interface/icons/achievements/belisars_legacy.dds"
+
+	option = { name = ach_tracker.glory }
+}
