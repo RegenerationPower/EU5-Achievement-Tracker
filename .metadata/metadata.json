@@ -2,7 +2,7 @@
 	"name":	"Achievement Tracker (non-Ironman)",
 	"id":	"regenpower.achievement_tracker",
 	"version":	"0.1",
-	"supported_game_version":	"1.*",
+	"supported_game_version":	"1.2.5",
 	"short_description":	"Shows a notification when vanilla achievement conditions are met, even outside Ironman. Steam will not credit them — for personal challenge tracking.",
 	"tags":	["Gameplay"],
 	"relationships":	[],
