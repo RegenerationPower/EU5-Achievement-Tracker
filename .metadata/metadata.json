@@ -1,9 +1,9 @@
 {
 	"name":	"Achievement Tracker (non-Ironman)",
 	"id":	"regenpower.achievement_tracker",
-	"version":	"0.1",
+	"version":	"0.2",
 	"supported_game_version":	"1.2.5",
-	"short_description":	"Shows a notification when vanilla achievement conditions are met, even outside Ironman. Steam will not credit them — for personal challenge tracking.",
+	"short_description":	"Play with mods and still feel the rush of \"I just earned that one.\" Whenever you meet a vanilla achievement condition — even without Ironman, with mods loaded, or a modified checksum — this mod fires a popup with the real icon, name and description. Steam will not unlock the achievement; the popup is for you.",
 	"tags":	["Gameplay"],
 	"relationships":	[],
 	"game_custom_data":	{
